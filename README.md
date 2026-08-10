@@ -1,7 +1,7 @@
 # asteroids
 Asteroids game using SDL3 and SDL_image
 
-**bold text** In order to build and run, you will need to have SDL3 and SDL_image installed.
+**In order to build and run, you will need to have SDL3 and SDL_image installed.**
 
 Building with CMake with fetch SDL3 from github and incorporate with build.
 
