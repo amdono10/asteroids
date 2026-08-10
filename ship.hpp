@@ -1,0 +1,23 @@
+#ifndef _SHIP_HPP
+#define _SHIP_HPP
+
+#include "entity.hpp"
+
+class Ship : public Entity
+{
+public:
+	Ship(class Game* game);
+	void UpdateEntity(float deltaTime) override;
+	// void ProcessKeyboard(const bool* state);
+	// float GetRightSpeed() const { return mRightSpeed; }
+	// float GetDownSpeed() const { return mDownSpeed; }
+
+	void EntityInput(const bool* keyState) override;
+	
+private:
+	// float mRightSpeed;
+	// float mDownSpeed;
+	float mLaserCooldown;
+};
+
+#endif	// _SHIP_HPP
