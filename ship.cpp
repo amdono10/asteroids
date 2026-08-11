@@ -33,6 +33,11 @@ void Ship::EntityInput(const bool* keyState)
 	if(keyState[SDL_SCANCODE_SPACE] && mLaserCooldown <= 0.0f)
 	{
 		// create a laser and set its position/rotation to mine
+		Laser* laser = new Laser(GetGame());
+		laser->SetPosition(GetPosition());
+		laser->SetRotation(GetRotation());
 		
+		// Reset laser cooldown (half second)
+		mLaserCooldown = 0.5f;
 	}
 }

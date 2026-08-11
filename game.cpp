@@ -31,7 +31,7 @@ bool Game::Initialize()
 		return false;
 	}
 
-	if (!SDL_CreateWindowAndRenderer("Side Scroller", 1024, 768, SDL_WINDOW_RESIZABLE, &mWindow, &mRenderer))
+	if (!SDL_CreateWindowAndRenderer("Asteroids", 1024, 768, SDL_WINDOW_RESIZABLE, &mWindow, &mRenderer))
 	{
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't create window and renderer: %s", SDL_GetError());
 		return false;
