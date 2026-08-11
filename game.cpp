@@ -4,11 +4,12 @@
 #include "asteroid.hpp"
 #include "entity.hpp"
 #include "math.hpp"
+#include "random.hpp"
 #include "spriteComponent.hpp"
-// #include "ship.hpp"
-#include "character.hpp"
-#include "bgSpriteComponent.hpp"
-#include "tileMapComponent.hpp"
+#include "inputComponent.hpp"
+#include "circleComponent.hpp"
+#include "laser.hpp"
+#include "ship.hpp"
 
 // constructor
 Game::Game():
@@ -17,7 +18,7 @@ mRenderer(nullptr),
 mTicksCount(0),
 mIsRunning(true),
 mUpdatingEntities(false),
-mCharacter(nullptr)
+mShip(nullptr)
 {
 }
 

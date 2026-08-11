@@ -6,7 +6,7 @@
 #include "entity.hpp"
 
 
-Class MoveComponent : public Component
+class MoveComponent : public Component
 {
 public:
 	// lower udate order to update first

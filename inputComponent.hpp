@@ -17,7 +17,7 @@ public:
 	float GetMaxAngular() const { return mMaxAngularSpeed; }
 	int GetForwardKey() const { return mForwardKey; }
 	int GetBackKey() const { return mBackKey; }
-	int GetClockwiseKey const { return mClockwiseKey; }
+	int GetClockwiseKey() const { return mClockwiseKey; }
 	int GetCounterClockwiseKey() const { return mCounterClockwiseKey; }
 
 	void SetMaxForwardSpeed(float speed) { mMaxForwardSpeed = speed; }

@@ -37,7 +37,7 @@ void Laser::UpdateEntity(float deltaTime)
 		// do we intersect with an asteroid?
 		for (auto ast : GetGame()->GetAsteroid())
 		{
-			if (Intersect(*mCircle, *(ast->GetCircle)))
+			if (Intersect(*mCircle, *(ast->GetCircle())))
 			{
 				// the first asteroid we intersect with, 
 				// set ourselves and the asteroid to dead

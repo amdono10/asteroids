@@ -10,7 +10,7 @@ mRadius(0.0f)
 
 const Vector2& CircleComponent::GetCenter() const
 {
-	return mOwner-GetPosition();
+	return mOwner->GetPosition();
 }
 
 float CircleComponent::GetRadius() const

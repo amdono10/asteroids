@@ -1,7 +1,7 @@
 # set minimum CMake version
 cmake_minimum_required(VERSION 4.3 FATAL_ERROR)
 # project name and language
-project(sideScroller CXX)
+project(asteroids CXX)
 
 # automatically add the current source and build directories to the include path
 # this is useful in out-of-source buildes
@@ -12,10 +12,14 @@ set(LIB_SOURCE
 	math.hpp				math.cpp
 	component.hpp			component.cpp
 	entity.hpp				entity.cpp
+	random.hpp				random.cpp
 	spriteComponent.hpp		spriteComponent.cpp
-	tileMapComponent.hpp	tileMapComponent.cpp
-	animSpriteComponent.hpp	animSpriteComponent.cpp
-	character.hpp			character.cpp
+	circleComponent.hpp		circleComponent.cpp
+	moveComponent.hpp		moveComponent.cpp
+	inputComponent.hpp		inputComponent.cpp
+	ship.hpp				ship.cpp
+	laser.hpp				laser.cpp
+	asteroid.hpp			asteroid.cpp
 	game.hpp 				game.cpp)
 
 # add source for Main program loop here
@@ -98,7 +102,7 @@ else()
 endif()
 
 # set game name/title here
-set(EXECUTABLE_NAME sideScroller)
+set(EXECUTABLE_NAME asteroids)
 
 # try to prevent accidental in-source builds, as these cause a lot of problems
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
