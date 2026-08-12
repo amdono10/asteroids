@@ -20,8 +20,8 @@ SpriteComponent::~SpriteComponent()
 
 void SpriteComponent::Draw(SDL_Renderer* renderer)
 {
-	// only draw if we have a texture
-	if (mTexture)
+	// only draw if we have a texture and are EActive state
+	if (mTexture && mOwner->GetState() == Entity::EActive)
 	{
 		SDL_FRect r;
 		// Scale the width/height by owner's scale

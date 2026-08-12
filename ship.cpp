@@ -35,8 +35,8 @@ void Ship::UpdateEntity(float deltaTime)
 	{
 		if (Intersect(*mCircle, *(ast->GetCircle())))
 		{
-			// set ourself to dead	
-			SetState(EDead);
+			// set ourself to Paused	
+			SetState(EPaused);
 			break;
 		}
 	}
