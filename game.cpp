@@ -18,7 +18,8 @@ mRenderer(nullptr),
 mTicksCount(0),
 mIsRunning(true),
 mUpdatingEntities(false),
-mShip(nullptr)
+mShip(nullptr),
+mDeathTimer(1.0f)
 {
 }
 
@@ -99,6 +100,34 @@ void Game::UpdateGame()
 	}
 	mTicksCount = SDL_GetTicks();
 
+	// if mShip entity is dead, start the death timer
+	if (mShip->GetState() == Entity::EDead)
+	{
+		mDeathTimer -= deltaTime;
+		if (mDeathTimer <= 0.0f)
+		{
+			SpriteComponent* newSC = new SpriteComponent(mShip);
+			newSC->SetTexture(GetTexture("Assets/Ship.png"));
+			// create an input component and set keys/speed
+			InputComponent* ic = new InputComponent(mShip);
+			ic->SetForwardKey(SDL_SCANCODE_W);
+			ic->SetBackKey(SDL_SCANCODE_S);
+			ic->SetClockwiseKey(SDL_SCANCODE_A);
+			ic->SetCounterClockwiseKey(SDL_SCANCODE_D);
+			ic->SetMaxForwardSpeed(300.0f);
+			ic->SetMaxAngularSpeed(Math::TwoPi);
+
+			// create a circle component for ship collision
+			CircleComponent* cc = new CircleComponent(mShip);
+			cc->SetRadius(32.0f);
+
+			mShip->SetPosition(Vector2(512.0f, 384.0f));
+			mShip->SetRotation(Math::PiOver2);
+			// reset death timer
+			mDeathTimer = 1.0f;
+		}
+	}
+
 	// update all entities
 	mUpdatingEntities = true;
 	for (auto entity : mEntities)
@@ -119,7 +148,7 @@ void Game::UpdateGame()
 	for (auto entity : mEntities)
 	{
 		if (entity->GetState() == Entity::EDead)
-		{
+		{	
 			deadEntities.emplace_back(entity);
 		}
 	}

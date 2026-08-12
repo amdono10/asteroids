@@ -1,8 +1,10 @@
 #include "ship.hpp"
 #include "spriteComponent.hpp"
 #include "inputComponent.hpp"
+#include "circleComponent.hpp"
 #include "game.hpp"
 #include "laser.hpp"
+#include "asteroid.hpp"
 
 Ship::Ship(Game* game):
 	Entity(game),
@@ -21,10 +23,23 @@ Ship::Ship(Game* game):
 	ic->SetMaxForwardSpeed(300.0f);
 	ic->SetMaxAngularSpeed(Math::TwoPi);
 
+	// create a circle component for ship collision
+	mCircle = new CircleComponent(this);
+	mCircle->SetRadius(32.0f);
 }
 
 void Ship::UpdateEntity(float deltaTime)
 {
+	// do we intersect with an asteroid?
+	for (auto ast : GetGame()->GetAsteroid())
+	{
+		if (Intersect(*mCircle, *(ast->GetCircle())))
+		{
+			// set ourself to dead	
+			SetState(EDead);
+			break;
+		}
+	}
 	mLaserCooldown -= deltaTime;	
 }
 

@@ -15,9 +15,8 @@ public:
 	void EntityInput(const bool* keyState) override;
 	
 private:
-	// float mRightSpeed;
-	// float mDownSpeed;
 	float mLaserCooldown;
+	class CircleComponent* mCircle;
 };
 
 #endif	// _SHIP_HPP

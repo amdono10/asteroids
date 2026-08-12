@@ -60,7 +60,8 @@ private:
 
 	// Game-specific
 	class Ship* mShip; // player's ship
-	std::vector<class Asteroid*> mAsteroids;	
+	std::vector<class Asteroid*> mAsteroids;
+	float mDeathTimer;
 };
 
 
